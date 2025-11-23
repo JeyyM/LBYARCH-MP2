@@ -5,9 +5,6 @@
 extern void imgCvtGrayDoubleToInt(int height, int width, double* floatPixels, unsigned char* intPixels);
 
 int main() {
-    printf("=== Grayscale Image Conversion: Double to UInt8 ===\n");
-    printf("Formula: i = f * 255\n\n");
-    
     int height = 3;
     int width = 4;
     int totalPixels = height * width;
@@ -20,7 +17,7 @@ int main() {
     
     unsigned char intPixels[12];
     
-    printf("Input (3x4 image - double float values):\n");
+    printf("Input:\n");
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             printf("%.2f ", floatPixels[i * width + j]);
@@ -31,7 +28,7 @@ int main() {
     
     imgCvtGrayDoubleToInt(height, width, floatPixels, intPixels);
     
-    printf("Output (3x4 image - uint8 values):\n");
+    printf("Output:\n");
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             printf("%3u ", intPixels[i * width + j]);
