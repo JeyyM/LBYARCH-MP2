@@ -52,7 +52,8 @@ int main() {
 
     for (int run = 0; run < runs; run++) {
         for (int i = 0; i < totalPixels; i++) {
-            randFloatPixels[i] = (double)rand() / RAND_MAX;
+            double val = (double)rand() / RAND_MAX;
+            randFloatPixels[i] = ((int)(val * 100 + 0.5)) / 100.0;
         }
         clock_t start = clock();
         imgCvtGrayDoubleToInt(height, width, randFloatPixels, randIntPixels);
@@ -92,7 +93,8 @@ int main() {
 
     for (int run = 0; run < runs; run++) {
         for (int i = 0; i < totalPixels; i++) {
-            randFloatPixels100[i] = (double)rand() / RAND_MAX;
+            double val = (double)rand() / RAND_MAX;
+            randFloatPixels100[i] = ((int)(val * 100 + 0.5)) / 100.0;
         }
         clock_t start = clock();
         imgCvtGrayDoubleToInt(height, width, randFloatPixels100, randIntPixels100);
@@ -130,7 +132,8 @@ int main() {
     double totalTime460 = 0.0;
     for (int run = 0; run < runs; run++) {
         for (int i = 0; i < totalPixels; i++) {
-            randFloatPixels460[i] = (double)rand() / RAND_MAX;
+            double val = (double)rand() / RAND_MAX;
+            randFloatPixels460[i] = ((int)(val * 100 + 0.5)) / 100.0;
         }
         clock_t start = clock();
         imgCvtGrayDoubleToInt(height, width, randFloatPixels460, randIntPixels460);

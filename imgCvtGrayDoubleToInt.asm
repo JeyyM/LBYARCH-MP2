@@ -3,6 +3,7 @@
 
 section .data
     mult255: dq 255.0 ; to multiply the float
+    half: dq 0.5      ; for rounding
 
 section .text
 bits 64
@@ -16,7 +17,6 @@ global imgCvtGrayDoubleToInt
 ; R9  = intPixels pointer
 
 imgCvtGrayDoubleToInt:
-    ; Setup stack frame
     push rbp
     mov rbp, rsp
     
@@ -40,16 +40,14 @@ imgCvtGrayDoubleToInt:
     jge .end
     
     movsd xmm0, qword [rsi + rcx*8] ; 8 bytes per double
-    
+
     ; Multiply by 255.0
     mulsd xmm0, xmm1
-    
-    ; Convert float to int
-    cvttsd2si rbx, xmm0
-    
+
+    cvtsd2si rbx, xmm0
+
     ; Store as byte size
     mov byte [rdi + rcx], bl
-    
     inc rcx
     jmp .loop
     
